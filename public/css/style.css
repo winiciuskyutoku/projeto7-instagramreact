@@ -316,3 +316,43 @@ ion-icon {
 .liked{
   color: red;
 }
+
+.conteudo{
+  position: relative;
+}
+
+.animation {
+  width: 20%;
+  height: 20%;
+  visibility: hidden;
+  animation: animation 0.5s ease;
+  animation-iteration-count: 1;
+  color: white;
+  position: absolute;
+  top: 40%;
+  right: 40%;
+  bottom: 40%;
+  left: 40%;
+  z-index: 1;
+}
+
+.displayNone {
+  display: none;
+}
+
+@keyframes animation {
+
+  0% {
+    visibility: visible;
+    transform: scale(0.2, 0.2);
+  }
+
+  60%{
+    transform: scale(1, 1);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
