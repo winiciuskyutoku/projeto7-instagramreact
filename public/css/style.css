@@ -305,3 +305,14 @@ ion-icon {
   color: black;
 }
 
+.saved {
+  color: red;
+}
+
+.notSaved {
+  color: none;
+}
+
+.liked{
+  color: red;
+}

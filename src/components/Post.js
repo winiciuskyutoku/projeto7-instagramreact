@@ -1,38 +1,63 @@
+import React from "react"
 
 export default function Post(props) {
+    const [nameSaved, setnameSaved] = React.useState("bookmark-outline")
+    const [liked, setLiked] = React.useState("heart-outline")
+    const [none, setNone] = React.useState("")
+    const [numLikes, setnumLikes] = React.useState(props.likes)
+
+    function markAsLiked(item){
+        if (liked === "heart-outline"){
+            setLiked("heart");
+            setNone("liked");
+            setnumLikes(numLikes + 1)
+        } else if (liked === "heart" && item !== "image"){
+            setLiked("heart-outline");
+            setNone("");
+            setnumLikes(numLikes - 1)
+        }
+    }
+
+    function markAsSaved(){
+        if(nameSaved === "bookmark-outline"){
+            setnameSaved("bookmark")
+        } else if (nameSaved === "bookmark"){
+            setnameSaved("bookmark-outline")
+        }
+    }
 
     return (
-        <div class="post">
-            <div class="topo">
-                <div class="usuario">
+        <div className="post">
+            <div className="topo">
+                <div className="usuario">
                     <img src={props.user} alt={props.name} />
                     {props.name}
                 </div>
-                <div class="acoes">
+                <div className="acoes">
                     <ion-icon name="ellipsis-horizontal"></ion-icon>
                 </div>
             </div>
 
-            <div class="conteudo">
-                <img src={props.content} alt={props.contentName} />
+            <div className="conteudo">
+                <img onClick={() => markAsLiked("image")} src={props.content} alt={props.contentName} />
             </div>
 
-            <div class="fundo">
-                <div class="acoes">
+            <div className="fundo">
+                <div className="acoes">
                     <div>
-                        <ion-icon name="heart-outline"></ion-icon>
+                        <ion-icon name={liked} class={none} onClick={markAsLiked}></ion-icon>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon name="bookmark-outline"></ion-icon>
+                        <ion-icon name={nameSaved} onClick={markAsSaved} ></ion-icon>
                     </div>
                 </div>
 
-                <div class="curtidas">
+                <div className="curtidas">
                     <img src={props.likedImage} alt={props.likedName} />
-                    <div class="texto">
-                        Curtido por <strong>{props.likedName}</strong> e <strong>outras 101.523 pessoas</strong>
+                    <div className="texto">
+                        Curtido por <strong>{props.likedName}</strong> e <strong>outras {numLikes} pessoas</strong>
                     </div>
                 </div>
             </div>
