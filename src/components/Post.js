@@ -30,7 +30,7 @@ export default function Post(props) {
     }
 
     return (
-        <div className="post">
+        <div data-test="post" className="post">
             <div className="topo">
                 <div className="usuario">
                     <img src={props.user} alt={props.name} />
@@ -42,26 +42,26 @@ export default function Post(props) {
             </div>
 
             <div className="conteudo">
-                <img onDoubleClick={() => markAsLiked("image")} src={props.content} alt={props.contentName} />
+                <img data-test="post-image" onDoubleClick={() => markAsLiked("image")} src={props.content} alt={props.contentName} />
                 <ion-icon name="heart" class={animation}></ion-icon>
             </div>
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <ion-icon name={liked} class={none} onClick={markAsLiked}></ion-icon>
+                        <ion-icon data-test="like-post" name={liked} class={none} onClick={markAsLiked}></ion-icon>
                         <ion-icon name="chatbubble-outline" ></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon name={nameSaved} onClick={markAsSaved} ></ion-icon>
+                        <ion-icon data-test="save-post" name={nameSaved} onClick={markAsSaved} ></ion-icon>
                     </div>
                 </div>
 
                 <div className="curtidas">
                     <img src={props.likedImage} alt={props.likedName} />
                     <div className="texto">
-                        Curtido por <strong>{props.likedName}</strong> e <strong>outras {numLikes} pessoas</strong>
+                        Curtido por <strong data-test="likes-number">{props.likedName}</strong> e <strong>outras {numLikes} pessoas</strong>
                     </div>
                 </div>
             </div>
